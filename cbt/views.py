@@ -131,9 +131,9 @@ class QuestionView(DetailView):
             #次の問題へ
             context['nextquestion']=Detail.objects.get(field__subjct__id=nowsubjcts,field__id=nowfield,questionnum=nextquestion)
         
-        if Detail.objects.filter(field__subjct__subjctsnum=nowsubjcts,field__id=nowfield,questionnum=backquestion).exists():
+        if Detail.objects.filter(field__subjct__id=nowsubjcts,field__id=nowfield,questionnum=backquestion).exists():
             #前の問題へ
-            context['backquestion']=Detail.objects.get(field__subjct__subjctsnum=nowsubjcts,field__id=nowfield,questionnum=backquestion)
+            context['backquestion']=Detail.objects.get(field__subjct__id=nowsubjcts,field__id=nowfield,questionnum=backquestion)
        
         
         return context
